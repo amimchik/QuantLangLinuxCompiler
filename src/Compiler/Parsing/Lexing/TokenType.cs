@@ -7,12 +7,12 @@ public enum TokenType
     Fn,
     Struct,
     Prot,
-    Ret,
+    Return,
     If,
     Else,
     While,
     Sizeof,
-    
+
     // Types:
     I32,
     I64,
@@ -24,20 +24,41 @@ public enum TokenType
     // Id:
     Identifier,
 
+    // Literals:
+    NumberLiteral,
+    CharLiteral,
+    StringLiteral,
+
     // Operators:
     Plus,
     Minus,
     Star,
     Slash,
-    Modullo,
+    Modulo,
+
+    GT,
+    LT,
+    GTEQ,
+    LTEQ,
+    EQ,
+    NTEQ,
+    NOT,
+    AND,
+    OR,
+    BAND,
+    BOR,
+    XOR,
+
+    Assign,     // =
 
     // Separators:
-    Comma,
-    Point,
-    Colon,
-    Semicolon,
+    Comma,      // ,
+    Dot,        // .
+    Colon,      // :
+    Semicolon,  // ;
+    Arrow,      // ->
 
-    Lparen,
+    LParen,
     RParen,
     LBracket,
     RBracket,
