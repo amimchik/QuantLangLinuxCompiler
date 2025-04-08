@@ -43,7 +43,7 @@ public class Tokenizer(string input)
         { "!", new Token(TokenType.NOT, string.Empty) },
         { "&&", new Token(TokenType.AND, string.Empty) },
         { "||", new Token(TokenType.OR, string.Empty) },
-        { "&", new Token(TokenType.BAND, string.Empty) },
+        { "&", new Token(TokenType.Ampersand, string.Empty) },
         { "|", new Token(TokenType.BOR, string.Empty) },
         { "^", new Token(TokenType.XOR, string.Empty) },
         { ",", new Token(TokenType.Comma, string.Empty) },

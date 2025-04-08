@@ -36,18 +36,18 @@ public enum TokenType
     Slash,
     Modulo,
 
-    GT,
-    LT,
-    GTEQ,
-    LTEQ,
-    EQ,
-    NTEQ,
-    NOT,
-    AND,
-    OR,
-    BAND,
-    BOR,
-    XOR,
+    GT,         // >
+    LT,         // <
+    GTEQ,       // >=
+    LTEQ,       // <=
+    EQ,         // ==
+    NTEQ,       // !=
+    NOT,        // !
+    AND,        // &&
+    OR,         // ||
+    BOR,        // |
+    XOR,        // ^
+    Ampersand,  // &
 
     Assign,     // =
 

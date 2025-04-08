@@ -1,1 +1,1 @@
-8:04 - lexer done
+8:04 - lexer done, started making ast
