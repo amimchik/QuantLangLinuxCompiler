@@ -11,6 +11,7 @@ public enum TokenType
     If,
     Else,
     While,
+    Asm,
     Sizeof,
 
     // Types:

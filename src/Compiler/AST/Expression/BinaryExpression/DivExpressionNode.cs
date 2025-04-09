@@ -4,7 +4,7 @@ namespace org.amimchik.QuantLangLinuxCompiler.src.Compiler.AST.Expression.Binary
 
 public class DivExpressionNode(ExpressionNode left, ExpressionNode right) : BinaryExpressionNode(left, right)
 {
-    public override NodeType Type => NodeType.SubstractExpression;
+    public override NodeType Type => NodeType.DivExpression;
 
     public override T Accept<T>(IVisitor<T> visitor) => visitor.Visit(this);
 }

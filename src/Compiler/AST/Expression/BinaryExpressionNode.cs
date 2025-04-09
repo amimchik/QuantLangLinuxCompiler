@@ -6,4 +6,6 @@ public abstract class BinaryExpressionNode(ExpressionNode left, ExpressionNode r
     public ExpressionNode Right { get; set; } = right;
 
     public override List<ASTNode> GetChildNodes() => MakeList(Left, Right);
+
+    public override bool IsLeftHandSide() => false;
 }

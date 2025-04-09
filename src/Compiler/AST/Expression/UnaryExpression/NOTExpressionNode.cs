@@ -7,4 +7,6 @@ public class NOTExpressionNode(ExpressionNode operand) : UnaryExpressionNode(ope
     public override NodeType Type => NodeType.NOTExpression;
 
     public override T Accept<T>(IVisitor<T> visitor) => visitor.Visit(this);
+
+    public override bool IsLeftHandSide() => false;
 }

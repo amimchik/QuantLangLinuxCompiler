@@ -12,4 +12,6 @@ public class NumberLiteralExpressionNode(long intv, double floatv) : ExpressionN
     public override T Accept<T>(IVisitor<T> visitor) => visitor.Visit(this);
 
     public override List<ASTNode> GetChildNodes() => [];
+
+    public override bool IsLeftHandSide() => false;
 }

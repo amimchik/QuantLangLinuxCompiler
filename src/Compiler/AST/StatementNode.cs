@@ -5,4 +5,5 @@ public abstract class StatementNode : ASTNode
     public abstract override List<ASTNode> GetChildNodes();
     public abstract override NodeType Type { get; }
     public abstract override T Accept<T>(IVisitor<T> visitor);
+    public override bool IsLeftHandSide() => false;
 }

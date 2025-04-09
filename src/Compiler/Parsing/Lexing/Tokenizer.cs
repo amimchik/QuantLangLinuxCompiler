@@ -24,7 +24,8 @@ public class Tokenizer(string input)
         { "i16", new Token(TokenType.I16, string.Empty) },
         { "char", new Token(TokenType.Char, string.Empty) },
         { "float", new Token(TokenType.Float, string.Empty) },
-        { "double", new Token(TokenType.Double, string.Empty) }
+        { "double", new Token(TokenType.Double, string.Empty) },
+        { "asm", new Token(TokenType.Asm, string.Empty) }
     };
     private readonly Dictionary<string, Token> specTokens = new()
     {

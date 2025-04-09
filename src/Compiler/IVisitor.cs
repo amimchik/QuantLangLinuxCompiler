@@ -1,7 +1,6 @@
 ﻿using org.amimchik.QuantLangLinuxCompiler.src.Compiler.AST.Expression;
 using org.amimchik.QuantLangLinuxCompiler.src.Compiler.AST.Expression.BinaryExpression;
 using org.amimchik.QuantLangLinuxCompiler.src.Compiler.AST.Expression.UnaryExpression;
-using org.amimchik.QuantLangLinuxCompiler.src.Compiler.AST.LHS;
 using org.amimchik.QuantLangLinuxCompiler.src.Compiler.AST.Statement;
 
 namespace org.amimchik.QuantLangLinuxCompiler.src.Compiler;
@@ -10,6 +9,9 @@ public interface IVisitor<T>
 {
     T Visit(NumberLiteralExpressionNode node);
     T Visit(StringLiteralExpressionNode node);
+
+    T Visit(FunctionCallExpressionNode node);
+    T Visit(VariableCallExpressionNode node);
 
     T Visit(AddExpressionNode node);
     T Visit(SubstractExpressionNode node);
@@ -30,11 +32,18 @@ public interface IVisitor<T>
     T Visit(AddrExpressionNode node);
     T Visit(DerefExpressionNode node);
     T Visit(NOTExpressionNode node);
-
-    T Visit(LHSAssignNode node);
-    T Visit(LHSDerefNode node);
-    T Visit(LHSMemberNode node);
+    T Visit(StructMemberExpressionNode node);
 
     T Visit(AssignStatementNode node);
     T Visit(VariableDeclarationStatementNode node);
+    T Visit(FunctionDeclarationStatementNode node);
+    T Visit(BlockStatementNode node);
+
+    T Visit(StructDeclarationStatementNode node);
+    T Visit(ReturnStatementNode node);
+
+    T Visit(AsmStatementNode node);
+
+    T Visit(IfElseStatementNode node);
+    T Visit(WhileStatementNode node);
 }

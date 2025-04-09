@@ -2,9 +2,9 @@ using System;
 
 namespace org.amimchik.QuantLangLinuxCompiler.src.Compiler.AST.Statement;
 
-public class AssignStatementNode(LHSNode left, ExpressionNode right) : StatementNode
+public class AssignStatementNode(ExpressionNode left, ExpressionNode right) : StatementNode
 {
-    public LHSNode Left { get; set; } = left;
+    public ExpressionNode Left { get; set; } = left;
     public ExpressionNode Right { get; set; } = right;
 
     public override NodeType Type => NodeType.AssignStatement;

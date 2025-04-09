@@ -7,4 +7,6 @@ public class AddrExpressionNode(ExpressionNode operand) : UnaryExpressionNode(op
     public override NodeType Type => NodeType.AddrExpression;
 
     public override T Accept<T>(IVisitor<T> visitor) => visitor.Visit(this);
+
+    public override bool IsLeftHandSide() => false;
 }

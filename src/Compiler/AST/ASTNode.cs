@@ -6,4 +6,5 @@ public abstract class ASTNode
     public abstract NodeType Type { get; }
     protected static List<ASTNode> MakeList(params ASTNode[] nodes) => [.. nodes];
     public abstract T Accept<T>(IVisitor<T> visitor);
+    public abstract bool IsLeftHandSide();
 }

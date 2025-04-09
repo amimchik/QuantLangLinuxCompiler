@@ -5,6 +5,10 @@ public enum NodeType
     NumberLiteral,
     StringLiteral,
 
+    FunctionCallExpression,
+    VariableCallExpression,
+    StructMemberExpression,
+
     AddExpression,
     SubstractExpression,
     MulExpression,
@@ -26,10 +30,16 @@ public enum NodeType
     DerefExpression,
     AddrExpression,
 
-    LHSDeref,
-    LHSAssign,
-    LHSMember,
-
     AssignStatement,
     VariableDeclarationStatement,
+    FunctionDeclarationStatement,
+    BlockStatement,
+
+    StructDeclarationStatement,
+    ReturnStatement,
+
+    AsmStatement,
+
+    IfElseStatement,
+    WhileStatement,
 }
