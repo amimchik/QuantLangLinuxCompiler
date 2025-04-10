@@ -14,4 +14,6 @@ public class NumberLiteralExpressionNode(long intv, double floatv) : ExpressionN
     public override List<ASTNode> GetChildNodes() => [];
 
     public override bool IsLeftHandSide() => false;
+
+    public override string ToString() => $"NumLiteral:[I:({IntegerValue}),F:({FloatingValue})]";
 }

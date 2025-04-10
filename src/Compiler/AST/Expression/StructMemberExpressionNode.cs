@@ -1,7 +1,3 @@
-using System;
-using System.ComponentModel;
-using org.amimchik.QuantLangLinuxCompiler.src.Compiler.AST.LHS;
-
 namespace org.amimchik.QuantLangLinuxCompiler.src.Compiler.AST.Expression;
 
 public class StructMemberExpressionNode(ExpressionNode parent, string memberName) : ExpressionNode

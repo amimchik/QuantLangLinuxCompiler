@@ -13,4 +13,6 @@ public class StringLiteralExpressionNode(sbyte[] str) : ExpressionNode
     public override List<ASTNode> GetChildNodes() => [];
 
     public override bool IsLeftHandSide() => false;
+
+    public override string ToString() => $"StrLiteral:[{string.Join(",", Value)}]";
 }

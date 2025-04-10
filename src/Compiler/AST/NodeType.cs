@@ -29,6 +29,9 @@ public enum NodeType
     NOTExpression,
     DerefExpression,
     AddrExpression,
+    IndexExpression,
+
+    ExpressionStatement,
 
     AssignStatement,
     VariableDeclarationStatement,

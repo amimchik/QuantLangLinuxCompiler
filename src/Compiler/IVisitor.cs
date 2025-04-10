@@ -33,6 +33,9 @@ public interface IVisitor<T>
     T Visit(DerefExpressionNode node);
     T Visit(NOTExpressionNode node);
     T Visit(StructMemberExpressionNode node);
+    T Visit(IndexExpressionNode node);
+
+    T Visit(ExpressionStatementNode node);
 
     T Visit(AssignStatementNode node);
     T Visit(VariableDeclarationStatementNode node);
