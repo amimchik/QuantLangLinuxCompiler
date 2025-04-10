@@ -8,9 +8,18 @@ public class Token(TokenType type, string lexeme)
     public string Lexeme { get; } = lexeme;
     public TokenType Type { get; } = type;
     public override string ToString() => $"{Type}:'{Lexeme}'";
-    public static bool operator ==(Token left, Token right) => left.Type == right.Type &&
-    ContainsLexeme(left.Type) ?
-    left.Lexeme == right.Lexeme : true;
+    public static bool operator ==(Token left, Token right)
+    {
+        if (left.Type == right.Type)
+        {
+            if (ContainsLexeme(left.Type))
+            {
+                return left.Lexeme == right.Lexeme;
+            }
+            return true;
+        }
+        return false;
+    }
 
     public static bool operator !=(Token left, Token right) => !(left == right);
     public static bool ContainsLexeme(TokenType type)

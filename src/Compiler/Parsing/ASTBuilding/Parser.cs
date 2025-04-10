@@ -48,7 +48,7 @@ public class Parser(List<Token> tokens)
     }
     private StatementNode FunctionDeclaration()
     {
-        Console.WriteLine($"p = {1}");
+        //Console.WriteLine($"p = {1}");
         if (!Match(out Token name, TokenType.Identifier))
         {
             throw new Exception("Expected an identifier after 'fn' keyword");
@@ -140,7 +140,21 @@ public class Parser(List<Token> tokens)
         {
             return AsmStatement();
         }
-        throw new Exception();
+        if (Current.Type == TokenType.Return)
+        {
+            return Return();
+        }
+        return Assigment();
+    }
+    private ReturnStatementNode Return()
+    {
+        Expect(TokenType.Return, new Exception("return excepted"));
+
+        var ret = new ReturnStatementNode(Expression());
+
+        Expect(TokenType.Semicolon, new Exception("';' expected"));
+
+        return ret;
     }
     private IfElseStatementNode IfElseStatement()
     {
@@ -516,6 +530,7 @@ public class Parser(List<Token> tokens)
         public bool MayContinue() => Current != Token.EOF;
         public bool Match(out Token t, params TokenType[] types)
         {
+            Console.WriteLine($"Match:{Current};{pos}");
             t = Current;
             if (types.Contains(t.Type))
             {
@@ -526,6 +541,7 @@ public class Parser(List<Token> tokens)
         }
         public bool Advance()
         {
+            Console.WriteLine($"Advance:{Current};{pos}");
             if (SafeGet(pos) != Token.EOF)
             {
                 pos++;
@@ -535,6 +551,7 @@ public class Parser(List<Token> tokens)
         }
         public bool Rewind()
         {
+            Console.WriteLine($"Rewind:{Current};{pos}");
             if (pos > 0)
             {
                 pos--;

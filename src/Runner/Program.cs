@@ -10,8 +10,8 @@ public class Runner
     public static void Main(string[] args)
     {
         Tokenizer tokenizer = new("""
-        fn main(argc: i32, argv: char**) -> i32 {
-            printf("Hello, world!");
+        fn main() -> i32 {
+            printf("Hello, world!\n");
             return 0;
         }
         """);
