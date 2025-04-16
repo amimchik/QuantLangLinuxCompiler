@@ -8,4 +8,5 @@ public class BlockStatementNode(List<StatementNode> nodes) : StatementNode
     public override NodeType Type => NodeType.BlockStatement;
     public override T Accept<T>(IVisitor<T> visitor) => visitor.Visit(this);
     public override List<ASTNode> GetChildNodes() => MakeList([.. Nodes]);
+    public override string ToString() => $"{GetType()}[{string.Join("; ", GetChildNodes())}]";
 }

@@ -11,4 +11,6 @@ public class AsmStatementNode(string code) : StatementNode
     public override T Accept<T>(IVisitor<T> visitor) => visitor.Visit(this);
 
     public override List<ASTNode> GetChildNodes() => [];
+
+    public override string ToString() => $"{GetType()}[{string.Join("; ", GetChildNodes())}]";
 }

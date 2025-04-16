@@ -10,4 +10,5 @@ public enum QLTypePrimitive
     Float,
     Double,
     Pointer,
+    StaticArr,
 }

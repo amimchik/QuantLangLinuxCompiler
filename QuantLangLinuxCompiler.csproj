@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="src/Compiler/ASMGeneration/" />
     <Folder Include="src\API\" />
     <Folder Include="src\Compiler\ASMGenerator\" />
     <Folder Include="src\Compiler\AST\Statement\" />

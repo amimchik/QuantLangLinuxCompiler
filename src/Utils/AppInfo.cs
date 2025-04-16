@@ -4,7 +4,7 @@ public static class AppInfo
 {
     public static string[] GetStdIncludes()
     {
-        return ["D:\\quantlang\\inlcudes"];
+        return ["/home/mark/qllibs"];
     }
     public static string[] GetUsrIncludes()
     {

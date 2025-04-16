@@ -23,4 +23,5 @@ public class FunctionDeclarationStatementNode(string name,
 
         return nodes;
     }
+    public override string ToString() => $"{GetType()}[{string.Join("; ", GetChildNodes())}]";
 }

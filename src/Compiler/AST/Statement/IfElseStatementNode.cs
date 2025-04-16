@@ -10,4 +10,5 @@ public class IfElseStatementNode(ExpressionNode condition, StatementNode thenBlo
     public override NodeType Type => NodeType.IfElseStatement;
     public override T Accept<T>(IVisitor<T> visitor) => visitor.Visit(this);
     public override List<ASTNode> GetChildNodes() => MakeList(condition, thenBlock, elseBlock);
+    public override string ToString() => $"{GetType()}[{string.Join("; ", GetChildNodes())}]";
 }

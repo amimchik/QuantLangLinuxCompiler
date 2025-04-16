@@ -10,4 +10,6 @@ public class ExpressionStatementNode(ExpressionNode expr) : StatementNode
     public override T Accept<T>(IVisitor<T> visitor) => visitor.Visit(this);
 
     public override List<ASTNode> GetChildNodes() => MakeList(Expression);
+
+    public override string ToString() => $"{GetType()}[{string.Join("; ", GetChildNodes())}]";
 }

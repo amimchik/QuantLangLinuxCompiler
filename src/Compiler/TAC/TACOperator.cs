@@ -32,4 +32,11 @@ public enum TACOperator
     Ampersand,
 
     ASMCode,
+
+    Label,
+    Call,
+    Goto,
+    JmpIfZero,
+
+    Return,
 }

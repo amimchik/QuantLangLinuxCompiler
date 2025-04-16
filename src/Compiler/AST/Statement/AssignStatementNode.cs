@@ -12,4 +12,6 @@ public class AssignStatementNode(ExpressionNode left, ExpressionNode right) : St
     public override T Accept<T>(IVisitor<T> visitor) => visitor.Visit(this);
 
     public override List<ASTNode> GetChildNodes() => MakeList(Left, Right);
+
+    public override string ToString() => $"{GetType()}[{string.Join("; ", GetChildNodes())}]";
 }

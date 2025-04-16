@@ -95,7 +95,7 @@ public class Parser(List<Token> tokens)
             throw new Exception("Expected an ':' token after identifier in variable declaration");
         }
         QLType type = ParseType();
-        if (Current.Type == TokenType.Assign && explicitNoInitialValue)
+        if (Match(TokenType.Assign))
         {
             if (explicitNoInitialValue)
             {
@@ -131,6 +131,13 @@ public class Parser(List<Token> tokens)
         if (Current.Type == TokenType.If)
         {
             return IfElseStatement();
+        }
+        if (Current.Type == TokenType.Let)
+        {
+            Advance();
+            var decl = VariableDeclaration();
+            Expect(TokenType.Semicolon, new Exception("';' expected'"));
+            return decl;
         }
         if (Current.Type == TokenType.While)
         {
@@ -206,6 +213,8 @@ public class Parser(List<Token> tokens)
             {
                 throw new Exception("left from = statement expr must be left hand side");
             }
+
+            Expect(TokenType.Semicolon, new Exception("Expected ';' token after expression"));
 
             return new AssignStatementNode(left, right);
         }
@@ -456,6 +465,14 @@ public class Parser(List<Token> tokens)
                 return new FunctionCallExpressionNode(t.Lexeme, args);
             }
             return new VariableCallExpressionNode(t.Lexeme);
+        }
+        if (Match(TokenType.LParen))
+        {
+            var expr = Expression();
+
+            Expect(TokenType.RParen, new Exception("expected ')' token"));
+
+            return expr;
         }
 
         throw new Exception("Primary expected");

@@ -1,210 +1,56 @@
 # QuantLangCompiler
 
-QuantLangCompiler - это компилятор для языка программирования QuantLang, который преобразует исходный код в машинный код через несколько промежуточных этапов. Проект включает в себя этапы лексического анализа, построения абстрактного синтаксического дерева (AST), генерации трёхадресного кода (TAC) и ассемблерного кода.
+### This is a compiler for Quant Programming Language
 
-## Структура проекта
-```tree
-org.amimchik.QuantLangCompiler 
-|-README.md 
-|-src | |-API 
-| |-Runner 
-| | |-Runner.cs // точка входа в компилятор 
-| |-Compiler 
-| | |-Parsing 
-| | | |-Lexing 
-| | | | |-Tokenizer.cs, Token.cs, ... 
-| | | |-ASTBuilding 
-| | |-AST 
-| | |-TAC 
-| | |-ASMGenerator
+
+## Syntax
+Syntax of QuantLang is designed to be simple and understandable
+
+### Statements
+Statement in QuantLang must be ended with ';' token. 
+Here is a list of simple statements:
+
+```quantl
+// expressions statements:
+2 + 5;
+someFunc(3) + 65;
+// statements:
+a = 2 + 2; // assigment statement
+let a: i32 = 2 // decl statement
+asm("your asm code here"); // asm statement
+```
+### Types
+QuantLang supports:
+- `i32` - 32-bit signed integer
+- `i16` - 16-bit signed integer
+- `i64` - 64-bit signed integer
+- `char` - 8-bit signed integer, also a character
+- `<type>*` - represents a pointer
+- `struct <structname>` - object of custom type
+- `<type>[<count>]` - creates static array for \<count\> elements of \<type\>
+
+### Variables
+To declarate variable in QuantLang, use:
+```quantl
+fn main() {
+	let <name>: <type>; 	// without initial value
+	let <name>: <type> = ...; // with initial value
 ```
 
-### Описание папок
-
-- **`src/API`** — Папка для API компилятора (например, для внешнего интерфейса или взаимодействия с другими системами).
-- **`src/Runner`** — Точка входа в компилятор. Содержит файл `Runner.cs`, который управляет запуском компилятора.
-- **`src/Compiler/Parsing`** — Папка для лексического анализа (токенизация) и построения абстрактного синтаксического дерева.
-    - **`src/Compiler/Parsing/Lexing`** — Лексический анализ, включает файлы `Tokenizer.cs` и `Token.cs`.
-    - **`src/Compiler/Parsing/ASTBuilding`** — Логика создания абстрактного синтаксического дерева.
-- **`src/Compiler/AST`** — Папка для классов и структур, связанных с представлением AST.
-- **`src/Compiler/TAC`** — Генерация трёхадресного кода (TAC).
-- **`src/Compiler/ASMGenerator`** — Генерация ассемблерного кода.
-
-## Установка
-
-Для сборки и запуска проекта вам потребуется .NET SDK. Скачайте и установите его с официального сайта: https://dotnet.microsoft.com/download
-
-### Сборка проекта
-
-1. Клонируйте репозиторий:
-    ```
-    git clone https://github.com/yourusername/QuantLangCompiler.git
-    ```
-
-2. Перейдите в директорию проекта:
-    ```
-    cd QuantLangCompiler
-    ```
-
-3. Скомпилируйте проект:
-    ```
-    dotnet build
-    ```
-
-4. Запустите компилятор:
-    ```
-    dotnet run
-    ```
-
-## Структура компиляции
-
-1. **Лексический анализ** — Исходный код преобразуется в последовательность токенов.
-2. **Парсинг** — Токены анализируются и строится абстрактное синтаксическое дерево (AST).
-3. **Генерация трёхадресного кода (TAC)** — Из AST генерируется промежуточный код.
-4. **Генерация ассемблерного кода** — TAC преобразуется в ассемблерный код для целевой архитектуры.
-
-## Вклад в проект
-
-Если вы хотите внести свой вклад в проект, создайте pull request с описанием изменений. Пожалуйста, убедитесь, что ваши изменения не нарушают существующую функциональность.
-
-## Лицензия
-
-Этот проект распространяется под лицензией GNU. Подробности можно найти в файле LICENSE.
-
-# Синтаксис
-Синтаксис QuantLang прост и понятен.
-
-## Типы данных
-В QuantLang есть такие типы данных как:
-
--`i32` - целые 32-х битные числа
--`i64` - целые 64-х битные числа
--`i16` - целые 16 битные числа
--`char` - символ ascii, аналогичен signed byte
--`float` - 32-х битное число с плавающей точкой, оно же одинарной точности
--`double` - 64-х битное число с плавающей точкой, оно же двойной точности
-
--`struct <имя структуры>` - пользовательский тип данных
-
--`<тип>*` - указатель
-
-## Переменные
-Переменные в QuantLang объявляются таким образом
-```rust
-let <имя переменной>: <тип>
-```
-Например, создадим переменную my_variable типа i32:
-```rust
-let my_variable: i32
-```
-
-## Функции
-QuantLang - си подобный язык программирования, поэтому функции - неотъемлемая часть этого языка
-
-Для создания функций нужно указать ключевое слово fn, а для их прототипов prot
-
-```rust
-prot my_fn(my_arg: i32) -> i32
-
-fn my_fn(my_arg: i32) -> i32 {
-	return my_arg + 2
+### Functions
+To declarate function in QuantLang use
+```quantl
+fn <funcName>(<args>) -> <returnType> {
+	// body
 }
 ```
-
-## Условные конструкции
-QuantLang поддерживает только одну условную конструкцию: if-else
-```rust
-if (condition) {
-	// then
-} else {
-	// else
-}
-```
-Стоит заметить, что блок кода else опционален, и его можно опустить, так-же необязательно ставить фигурные скобки для блоков кода, можно просто написать ОДНУ инструкцию, пример
-```rust
-#include <stdlib.q>
-
-fn main() -> i32 {
-	if (condition)
-		print("hello")
-	
-	return 0
-}
-```
-## Циклы
-QuantLang поддерживает два цикла: while и for
-```rust
-fn main() -> i32 {
-	let i: i32
-	i = 0
-	
-	while (i < 10) {
-		// тело
-		i++
-	}
-	
-	for (let i2: i32; i2 < 10; i2++) {
-		// тело
-	}
-	return 0
-}
-```
-
-## Приведение типов
-QuantLang использует стандартное приведение типов из clang
-```rust
-let chr: char
-chr = 'd'
-let int: i32
-int = (i32)chr
-```
-Стоит заметить, что приведение типов для указателей необязательно
-```rust
-let ptr: char*
-let i_ptr: i32*
-i_ptr = ptr // Корректная запись
-i_ptr = (i32*)ptr // Тоже корректная запись
-```
-И делать это или нет - решать вам.
-
-## Препроцессор
-В QuantLang есть простой препроцессор имеющий несколько директив
-- `#define` - эта директива НЕ создает макросы, а используется для защиты от повторного включения, например:
-```
-#define MY_DEFINE
-```
-- `#ifndef, #endif` - используются для защиты от повторного включения и не только, в `#ifndef` передается название макроса аргументом, и если он определен, блок кода до директивы `#endif` не будет вставлен, пример:
-```
-#ifndef MY_FILE
-#define MY_FILE
-// содержимое файла
-#endif
-```
-- `#include` - эта директива вставляет содержимое файла, используйте <имя файла> как аргумент если нужно подключить файл из стандартной библиотеки и "имя файла", если нужно подключить файл из директории проекта, пример:
-```
-#include <stdlib.q>
-#include "myfile.q"
-```
-
-## Пример простого кода:
-```rust
-#include <stdlib.q>
-
+Example of factorial in QuantLang
+```quantl
 fn fact(n: i32) -> i32 {
-	if (n == 0) {
-		ret 1
+	if n == 0 {
+		return 1;
 	} else {
-		ret n * fact(n - 1)
+		return n * fact(n - 1);
 	}
 }
-
-fn main(argc: i32, argv: char*) -> i32 {
-
-	for (let i: i32 = 0; i < 11; i++) {
-		printf("%d! = %d", i, fact(i))
-	}
-
-	ret 0
-}
-
 ```
